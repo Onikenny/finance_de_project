@@ -1,0 +1,12 @@
+{
+	"name": "fdicHTTP",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/Onikenny/finance_de_project/refs/heads/main/data/FDIC_Insured_Banks_sample_data.csv",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

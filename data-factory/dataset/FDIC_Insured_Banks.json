@@ -1,0 +1,21 @@
+{
+	"name": "FDIC_Insured_Banks",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "fdicHTTP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

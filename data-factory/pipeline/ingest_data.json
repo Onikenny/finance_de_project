@@ -1,0 +1,46 @@
+{
+	"name": "ingest_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "move_file",
+				"description": "This activity copies a file from a data folder in a GitHub repository to the target raw layer storage account location. The dataset parameters are retrieved though the source and sink path related to the datalake from the parent pipeline.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "FDIC_Insured_Banks",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"adf_config": {
+				"type": "object"
+			}
+		},
+		"annotations": []
+	}
+}

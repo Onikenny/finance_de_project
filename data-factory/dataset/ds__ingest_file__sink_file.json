@@ -7,10 +7,16 @@
 		},
 		"parameters": {
 			"SinkFileContainer": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "fdic-insured-banks"
 			},
 			"RelativeSinkFileDirectory": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "fdic-raw-data"
+			},
+			"FileName": {
+				"type": "String",
+				"defaultValue": "fdic"
 			}
 		},
 		"annotations": [],
@@ -18,8 +24,18 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "@dataset().RelativeSinkFileDirectory",
-				"fileSystem": "@dataset().SinkFileContainer"
+				"fileName": {
+					"value": "@concat(\n\n  dataset().FileName,\n  \n  '_',\n  \n    substring(utcNow(), 0, 10),\n\n  '.csv'   \n  \n  )",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().RelativeSinkFileDirectory",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().SinkFileContainer",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

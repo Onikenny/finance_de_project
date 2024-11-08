@@ -61,11 +61,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"adf_config": {
-				"type": "object"
-			}
-		},
 		"annotations": []
 	}
 }
